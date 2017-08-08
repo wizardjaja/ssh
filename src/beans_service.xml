@@ -8,5 +8,7 @@
 		<property name="userDao" ref="userDao"/>
 	</bean>
 	
-
+	<bean name="adminService" class="com.wizard.service.impl.AdminServiceImpl">
+		<property name="adminDao" ref="adminDao"/>
+	</bean>
 </beans>

@@ -6,5 +6,8 @@
 	<bean name="loginAction" class="com.wizard.action.LoginAction">
 		<property name="userService" ref="userService"></property>
 	</bean>
-
+	
+	<bean name="adminAction" class="com.wizard.action.AdminAction">
+		<property name="adminService" ref="adminService"></property>
+	</bean>
 </beans>
