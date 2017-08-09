@@ -1,8 +1,10 @@
 package com.wizard.service.impl;
 
 import java.util.List;
+
 import com.wizard.bean.Admin;
 import com.wizard.dao.AdminDao;
+import com.wizard.page.Page;
 import com.wizard.service.AdminService;
 
 public class AdminServiceImpl implements AdminService {
@@ -28,9 +30,8 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public List<Admin> findAdminsList() {
-		List<Admin> adminsList = adminDao.findAdminsList();
-		return adminsList;
+	public Page findAdminsList(int currentPage, int pageSize) {
+		return adminDao.findAdminsList(currentPage, pageSize);
 	}
 
 }

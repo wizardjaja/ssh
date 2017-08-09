@@ -8,6 +8,7 @@ import org.hibernate.SessionFactory;
 
 import com.wizard.bean.Admin;
 import com.wizard.dao.AdminDao;
+import com.wizard.page.Page;
 
 public class AdminDaoImpl implements AdminDao {
 	private SessionFactory sessionFactory;
@@ -37,10 +38,20 @@ public class AdminDaoImpl implements AdminDao {
 	}
 
 	@Override
-	public List<Admin> findAdminsList() {
+	public Page findAdminsList(int currentPage, int pageSize) {
 		Query query = getSession().createQuery("from Admin");
-		List<Admin> list = query.list();
-		return list;
+		List<Admin> list1 = query.list();
+		query.setFirstResult((currentPage-1)*pageSize);
+		query.setMaxResults(pageSize);
+		List<Admin> list2 = query.list();
+		Page page = new Page(list1.size());
+		page.setCurrentPage(currentPage);
+		page.setPageSize(pageSize);
+		page.setData(list2);
+		page.setTotalPage();
+		//page.setAllRow();
+		
+		return page;
 	}
 
 }

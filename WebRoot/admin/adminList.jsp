@@ -8,6 +8,22 @@
     <link rel="stylesheet" type="text/css" href="css/common.css"/>
     <link rel="stylesheet" type="text/css" href="css/main.css"/>
     <script type="text/javascript" src="js/libs/modernizr.min.js"></script>
+    <script type="text/javascript">
+    function allChoose(){
+   	  var allcheck=document.getElementById("allck");
+  	  var idcks=document.getElementsByName("ids"); 
+  	  if(allcheck.checked==true){
+  		  for(var i=0;i<idcks.length;i++){
+  			  idcks[i].checked=true;
+  		  }
+  	   }else{ 
+  		   for(var i=0;i<idcks.length;i++){
+   			  idcks[i].checked=false;
+   		  }
+  	   }
+     }
+    </script>
+    
 </head>
 <body>
 <div class="topbar-wrap white">
@@ -42,7 +58,7 @@
                         <li><a href="design.html"><i class="icon-font">&#xe006;</i>产品类别</a></li>
                         <li><a href="design.html"><i class="icon-font">&#xe005;</i>产品管理</a></li>
                         <li><a href="design.html"><i class="icon-font">&#xe005;</i>订单管理</a></li>
-                        <li><a href="adminList.action"><i class="icon-font">&#xe005;</i>管理员管理</a></li>
+                        <li><a href="adminAction.action"><i class="icon-font">&#xe005;</i>管理员管理</a></li>
                         <li><a href="design.html"><i class="icon-font">&#xe012;</i>评论管理</a></li>
                         <li><a href="design.html"><i class="icon-font">&#xe052;</i>友情链接</a></li>
                         <li><a href="design.html"><i class="icon-font">&#xe033;</i>广告管理</a></li> 
@@ -63,7 +79,7 @@
     <div class="main-wrap">
 
         <div class="crumb-wrap">
-            <div class="crumb-list"><i class="icon-font"></i><a href="index.html">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">用户管理</span></div>
+            <div class="crumb-list"><i class="icon-font"></i><a href="index.html">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">管理员管理</span></div>
         </div>
         <div class="search-wrap">
             <div class="search-content">
@@ -82,21 +98,21 @@
             <form action="" name="myform" id="myform" method="post">
                 <div class="result-title">
                     <div class="result-list">
-                        <a href="#"><i class="icon-font"></i>增加用户</a>
+                        <a href="addAdmin.jsp"><i class="icon-font"></i>增加管理员</a>
                         <a id="batchDel" href="javascript:void(0)"><i class="icon-font"></i>批量删除</a> 
                     </div>
                 </div>
                 <div class="result-content">
                     <table class="result-tab" width="100%">
                         <tr>
-                            <th class="tc" width="5%"><input class="allChoose" name="" type="checkbox"></th>
+                            <th class="tc" width="5%"><input class="allChoose" id="allck" type="checkbox" onclick="allChoose()"></th>
                             <th>ID</th>
                             <th>用户名</th>
                             <th>密码</th>
                             <th>最后登录时间</th>
                             <th>操作</th>
                         </tr>
-                        <s:iterator value="data">
+                        <s:iterator value="page.data">
                         <tr>
                             <td class="tc"><input name="ids" value=" " type="checkbox"></td>
                             <td><s:property value="id"/></td>
@@ -110,7 +126,12 @@
                         </tr> 
                         </s:iterator>
                     </table>
-                    <div class="list-page"> 2 条 1/1 页</div>
+                    <div class="list-page">
+                    	共<s:property value="page.allRow"/>条
+                    	<s:property value="page.currentPage"/>/<s:property value="page.totalPage"/> 页
+                    	<a href="adminAction.action?currentPage=${currentPage-1 }">上一页</a>
+                    	<a href="adminAction.action?currentPage=${currentPage+1 }">下一页</a>
+                    </div>
                 </div>
             </form>
         </div>
