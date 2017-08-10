@@ -8,6 +8,7 @@ import org.hibernate.SessionFactory;
 
 import com.wizard.bean.User;
 import com.wizard.dao.UserDao;
+import com.wizard.page.Page;
 
 public class UserDaoImpl implements UserDao {
 private SessionFactory sessionFactory;
@@ -41,9 +42,17 @@ private SessionFactory sessionFactory;
 
 
 	@Override
-	public List<User> finduserList() {
+	public Page finduserList(int currentPage, int pageSize) {
 		Query query = getSession().createQuery("from User");
-		List<User> list = query.list();
-		return list;
+		List<User> list1 = query.list();
+		query.setFirstResult((currentPage-1)*pageSize);
+		query.setMaxResults(pageSize);
+		List<User> list2 = query.list();
+		Page page = new Page(list1.size());
+		page.setData(list2);
+		page.setCurrentPage(currentPage);
+		page.setPageSize(pageSize);
+		page.setTotalPage();
+		return page;
 	}
 }

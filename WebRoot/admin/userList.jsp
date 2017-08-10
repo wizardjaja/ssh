@@ -97,7 +97,7 @@
                             <th>注册时间</th>
                             <th>操作</th>
                         </tr>
-                        <s:iterator value="data">
+                        <s:iterator value="page.data">
                         <tr>
                             <td class="tc"><input name="ids" value=" " type="checkbox"></td>
                             <td><s:property value="username"/></td>
@@ -113,7 +113,11 @@
                         </tr> 
                         </s:iterator>
                     </table>
-                    <div class="list-page"> 2 条 1/1 页</div>
+                    <div class="list-page"> 2 条 1/1 页
+                    	${page.allRow }条   ${page.currentPage }/${page.totalPage }页
+                    	<a href="userAction.action?currentPage=${currentPage-1 }">上一页</a>
+                    	<a href="userAction.action?currentPage=${currentPage+1 }">下一页</a>
+                    </div>
                 </div>
             </form>
         </div>

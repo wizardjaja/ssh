@@ -6,6 +6,7 @@ import org.hibernate.SessionFactory;
 
 import com.wizard.bean.User;
 import com.wizard.dao.UserDao;
+import com.wizard.page.Page;
 import com.wizard.service.UserService;
 
 public class UserServiceImpl implements UserService {
@@ -38,9 +39,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<User> finduserList() {
-		List<User> list = userDao.finduserList();
-		return list;
+	public Page finduserList(int currentPage, int pageSize) {
+		return userDao.finduserList(currentPage, pageSize);
 	}
 
 }

@@ -5,21 +5,37 @@ import java.util.List;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.wizard.bean.User;
+import com.wizard.page.Page;
 import com.wizard.service.UserService;
 
 public class UserAction extends ActionSupport{
-	private List<User> data;
+	private Page page;
 	private String username;
 	private String password;
 	private UserService userService;
 	private String tel;
 	private String email;
+	private int currentPage = 1;
+	private int pageSize = 5;
 	
-	public List<User> getData() {
-		return data;
+	
+	public int getCurrentPage() {
+		return currentPage;
 	}
-	public void setData(List<User> data) {
-		this.data = data;
+	public void setCurrentPage(int currentPage) {
+		this.currentPage = currentPage;
+	}
+	public int getPageSize() {
+		return pageSize;
+	}
+	public void setPageSize(int pageSize) {
+		this.pageSize = pageSize;
+	}
+	public Page getPage() {
+		return page;
+	}
+	public void setPage(Page page) {
+		this.page = page;
 	}
 	public String getTel() {
 		return tel;
@@ -51,8 +67,7 @@ public class UserAction extends ActionSupport{
 	
 	@Override
 	public String execute() throws Exception {
-		data = userService.finduserList();
-		System.out.println(data);
+		page = userService.finduserList(currentPage, pageSize);
 		return SUCCESS;
 	}
 	
