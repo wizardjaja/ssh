@@ -113,7 +113,7 @@ public class AdminAction extends ActionSupport {
 		admin.setUsername(username);
 		admin.setPassword(password);
 		adminService.saveAdminUser(admin);
-		return SUCCESS;
+		return "ok";
 	}
 	
 	public String findAdminById() {
