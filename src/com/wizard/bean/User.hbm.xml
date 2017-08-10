@@ -9,5 +9,8 @@
 		</id>
 		<property name="username" column="username"/>
 		<property name="password" column="password"/>
+		<property name="tel" column="tel"/>
+		<property name="email" column="email"/>
+		<property name="loginTime" column="logintime"/>
 	</class>
 </hibernate-mapping>

@@ -1,5 +1,7 @@
 package com.wizard.service.impl;
 
+import java.util.List;
+
 import org.hibernate.SessionFactory;
 
 import com.wizard.bean.User;
@@ -22,6 +24,23 @@ public class UserServiceImpl implements UserService {
 			userDao.saveUser(user);
 
 		}
+	}
+
+	@Override
+	public void deleteUser(Integer id) {
+		userDao.deleteUser(id);
+		
+	}
+
+	@Override
+	public void updateUser(User user) {
+		userDao.updateUser(user);
+	}
+
+	@Override
+	public List<User> finduserList() {
+		List<User> list = userDao.finduserList();
+		return list;
 	}
 
 }
