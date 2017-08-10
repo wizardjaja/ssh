@@ -9,6 +9,7 @@
 		
 		<action name="adminAction" class="adminAction">
 			<result name="success">/admin/adminList.jsp</result>
+			<result name="successUpdate">/admin/updateAdmin.jsp</result>
 		</action>
 	</package>
 </struts>    

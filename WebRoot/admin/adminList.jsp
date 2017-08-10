@@ -114,14 +114,14 @@
                         </tr>
                         <s:iterator value="page.data">
                         <tr>
-                            <td class="tc"><input name="ids" value=" " type="checkbox"></td>
+                            <td class="tc"><input name="ids" value="<s:property value="id"/></td>" type="checkbox"></td>
                             <td><s:property value="id"/></td>
                             <td><s:property value="username"/></td>
                             <td><s:property value="password"/></td>
                             <td><s:property value="lastLoginTime"/></td>
                             <td>
-                                <a class="link-update" href=" ">修改</a>
-                                <a class="link-del" href=" ">删除</a>
+                                <a class="link-update" href="adminAction!findAdminById.action?id=${id}">修改</a>
+                                <a class="link-del" href="adminAction!delete.action?id=${id}">删除</a>
                             </td>
                         </tr> 
                         </s:iterator>
@@ -131,6 +131,8 @@
                     	<s:property value="page.currentPage"/>/<s:property value="page.totalPage"/> 页
                     	<a href="adminAction.action?currentPage=${currentPage-1 }">上一页</a>
                     	<a href="adminAction.action?currentPage=${currentPage+1 }">下一页</a>
+                    	<%-- 到第<input type="text" name="redpage" placeholder="${currentPage }" width="10px"/>页  
+                    	<a href="adminAction.action?currentPage=${redpage }">转到</a> --%>
                     </div>
                 </div>
             </form>

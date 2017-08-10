@@ -25,13 +25,19 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public void deleteAdminUser(int id) {
-		adminDao.deleteAdminUser(id);
+	public void deleteAdminUser(Admin admin) {
+		adminDao.deleteAdminUser(admin);
 	}
 
 	@Override
 	public Page findAdminsList(int currentPage, int pageSize) {
 		return adminDao.findAdminsList(currentPage, pageSize);
+	}
+
+	@Override
+	public Admin findAdminById(int id) {
+		Admin admin = adminDao.findAdminById(id);
+		return admin;
 	}
 
 }

@@ -33,8 +33,8 @@ public class AdminDaoImpl implements AdminDao {
 	}
 
 	@Override
-	public void deleteAdminUser(int id) {
-		getSession().delete(id);
+	public void deleteAdminUser(Admin admin) {
+		getSession().delete(admin);
 	}
 
 	@Override
@@ -53,5 +53,14 @@ public class AdminDaoImpl implements AdminDao {
 		
 		return page;
 	}
+
+	@Override
+	public Admin findAdminById(int id) {
+		Query query = getSession().createQuery("from Admin a where a.id="+id);
+		Admin admin = (Admin) query.list().get(0);
+		return admin;
+	}
+
+	
 
 }

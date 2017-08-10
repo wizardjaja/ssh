@@ -66,17 +66,18 @@
         </div>
         <div class="result-wrap">
             <div class="result-content">
-                <form action="adminAction!register.action" method="post" id="myform" name="myform">
+                <form action="adminAction!update.action" method="post" id="myform" name="myform">
                     <table class="insert-tab" width="100%">
                             <tr>
                                 <th><i class="require-red">*</i>用户名：</th>
                                 <td>
-                                    <input class="common-text required" id="username" name="username" size="50" value="" type="text">
+                                	<input class="common-text" name="id" size="50" value="${admin.id }" type="hidden">
+                                    <input class="common-text required" id="username" name="username" size="50" value="${admin.username }" type="text" readonly="readonly">
                                 </td>
                             </tr>
                             <tr>
                                 <th>密码：</th>
-                                <td><input class="common-text" name="password" size="50" type="text"></td>
+                                <td><input class="common-text" name="password" size="50" value="${admin.password }" type="text"></td>
                             </tr>
                             <tr>
                                 <th></th>
