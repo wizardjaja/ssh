@@ -122,6 +122,7 @@ public class AdminAction extends ActionSupport {
 	public String delete() {
 		admin = adminService.findAdminById(id);
 		adminService.deleteAdminUser(admin);
-		return "success";
+		System.out.println("delete...");
+		return SUCCESS;
 	}
 }

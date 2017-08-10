@@ -1,6 +1,5 @@
 package com.wizard.service.impl;
 
-import java.util.List;
 
 import com.wizard.bean.Admin;
 import com.wizard.dao.AdminDao;
