@@ -49,6 +49,8 @@ public class AdminDaoImpl implements AdminDao {
 		page.setPageSize(pageSize);
 		page.setData(list2);
 		page.setTotalPage();
+		page.isHasPrePage();
+		page.isHasNextPage();
 		//page.setAllRow();
 		
 		return page;

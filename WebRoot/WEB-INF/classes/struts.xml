@@ -10,6 +10,7 @@
 		<action name="adminAction" class="adminAction">
 			<result name="success">/admin/adminList.jsp</result>
 			<result name="successUpdate">/admin/updateAdmin.jsp</result>
+			<result name="ok" type="redirectAction">adminAction</result>
 		</action>
 	</package>
 </struts>    

@@ -16,6 +16,7 @@ public class AdminAction extends ActionSupport {
 	private String username;
 	private String password;
 	private int id;
+	private int[] ids;
 	private Admin admin;
 	/*private int redpage;
 	public int getRedpage() {
@@ -25,9 +26,18 @@ public class AdminAction extends ActionSupport {
 	public void setRedpage(int redpage) {
 		this.redpage = redpage;
 	}*/
-
+	
+	
 	public String getUsername() {
 		return username;
+	}
+
+	public int[] getIds() {
+		return ids;
+	}
+
+	public void setIds(int[] ids) {
+		this.ids = ids;
 	}
 
 	public Admin getAdmin() {
@@ -117,12 +127,22 @@ public class AdminAction extends ActionSupport {
 		admin.setUsername(username);
 		admin.setPassword(password);
 		adminService.updateAdminUser(admin);
-		return "success";
+		return "ok";
 	}
 	public String delete() {
 		admin = adminService.findAdminById(id);
 		adminService.deleteAdminUser(admin);
 		System.out.println("delete...");
-		return SUCCESS;
+		return "ok";
+	}
+	
+	public String deleteAdmins(){
+		System.out.println(ids);
+		for (int id : ids) {
+			System.out.println(id);
+			admin = adminService.findAdminById(id);
+			adminService.deleteAdminUser(admin);
+		}
+		return "ok";
 	}
 }

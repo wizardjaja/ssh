@@ -22,6 +22,12 @@
    		  }
   	   }
      }
+    function linktoPage(){
+    	 var fm=document.getElementById("myform");   
+		 var redpage=document.getElementById("redpage").value;
+    	 fm.action="adminAction.action?currentPage="+redpage;
+		 fm.submit();
+    }
     </script>
     
 </head>
@@ -95,11 +101,12 @@
             </div>
         </div>
         <div class="result-wrap">
-            <form action="" name="myform" id="myform" method="post">
+            <form action="adminAction!deleteAdmins.action" name="myform" id="myform" method="post">
                 <div class="result-title">
                     <div class="result-list">
                         <a href="addAdmin.jsp"><i class="icon-font"></i>增加管理员</a>
-                        <a id="batchDel" href="javascript:void(0)"><i class="icon-font"></i>批量删除</a> 
+                       <!--  <a id="batchDel" href="javascript:void(0)"><i class="icon-font"></i>批量删除</a> --> 
+                       <input type="submit" value="批量删除">
                     </div>
                 </div>
                 <div class="result-content">
@@ -114,7 +121,7 @@
                         </tr>
                         <s:iterator value="page.data">
                         <tr>
-                            <td class="tc"><input name="ids" value="<s:property value="id"/></td>" type="checkbox"></td>
+                            <td class="tc"><input name="ids" value="<s:property value="id"/>" type="checkbox"></td>
                             <td><s:property value="id"/></td>
                             <td><s:property value="username"/></td>
                             <td><s:property value="password"/></td>
@@ -129,10 +136,15 @@
                     <div class="list-page">
                     	共<s:property value="page.allRow"/>条
                     	<s:property value="page.currentPage"/>/<s:property value="page.totalPage"/> 页
-                    	<a href="adminAction.action?currentPage=${currentPage-1 }">上一页</a>
-                    	<a href="adminAction.action?currentPage=${currentPage+1 }">下一页</a>
-                    	<%-- 到第<input type="text" name="redpage" placeholder="${currentPage }" width="10px"/>页  
-                    	<a href="adminAction.action?currentPage=${redpage }">转到</a> --%>
+                    	<s:if test="page.hasPrePage">
+	                    	<a href="adminAction.action?currentPage=${currentPage-1 }">上一页</a>
+                    	</s:if>
+                    	<s:if test="page.hasNextPage">
+	                    	<a href="adminAction.action?currentPage=${currentPage+1 }">下一页</a>
+                    	</s:if>
+                    	到第<input type="text" id="redpage" placeholder="${currentPage }" style="width:5%"/>页  
+                    	<input type="button" id="linkbtn" value="转到" onclick="linktoPage()"/>
+                    	
                     </div>
                 </div>
             </form>
