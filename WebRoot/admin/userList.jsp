@@ -1,4 +1,5 @@
-﻿ 
+﻿<%@page language="java" pageEncoding="utf-8"%>
+<%@taglib prefix="s" uri="/struts-tags" %>
 <!doctype html>
 <html>
 <head>
@@ -37,11 +38,11 @@
                 <li>
                     <a href="#"><i class="icon-font">&#xe003;</i>常用操作</a>
                     <ul class="sub-menu">
-                        <li><a href="userList.html"><i class="icon-font">&#xe008;</i>用户管理</a></li>
+                        <li><a href="userAction.action"><i class="icon-font">&#xe008;</i>用户管理</a></li>
                         <li><a href="design.html"><i class="icon-font">&#xe006;</i>产品类别</a></li>
                         <li><a href="design.html"><i class="icon-font">&#xe005;</i>产品管理</a></li>
                         <li><a href="design.html"><i class="icon-font">&#xe005;</i>订单管理</a></li>
-                        <li><a href="design.html"><i class="icon-font">&#xe005;</i>管理员管理</a></li>
+                        <li><a href="adminAction.action"><i class="icon-font">&#xe005;</i>管理员管理</a></li>
                         <li><a href="design.html"><i class="icon-font">&#xe012;</i>评论管理</a></li>
                         <li><a href="design.html"><i class="icon-font">&#xe052;</i>友情链接</a></li>
                         <li><a href="design.html"><i class="icon-font">&#xe033;</i>广告管理</a></li> 
@@ -69,14 +70,6 @@
                 <form action="#" method="post">
                     <table class="search-tab">
                         <tr>
-                            <th width="120">选择分类:</th>
-                            <td>
-                                <select name="search-sort" id="">
-                                    <option value="">全部</option>
-                                    <option value="19">管理员用户</option>
-                                    <option value="20">普通用户</option>
-                                </select>
-                            </td>
                             <th width="70">关键字:</th>
                             <td><input class="common-text" placeholder="关键字" name="keywords" value="" id="" type="text"></td>
                             <td><input class="btn btn-primary btn2" name="sub" value="查询" type="submit"></td>
@@ -97,33 +90,28 @@
                     <table class="result-tab" width="100%">
                         <tr>
                             <th class="tc" width="5%"><input class="allChoose" name="" type="checkbox"></th>
-                            <th>ID</th>
                             <th>用户名</th>
-                            <th>真实姓名</th>
                             <th>密码</th>
                             <th>电话号码</th>
                             <th>邮箱</th> 
                             <th>注册时间</th>
-                            <th>最后登录时间</th>
                             <th>操作</th>
                         </tr>
-                         
+                        <s:iterator value="data">
                         <tr>
                             <td class="tc"><input name="ids" value=" " type="checkbox"></td>
-                            <td>aaa</td>
-                            <td>aaa</td>
-                            <td>aaa</td>
-                            <td>aaa</td>
-                            <td>aaa</td>
-                            <td>aaa</td>  
-                            <td>aaa</td>
-                            <td>aaa</td>
+                            <td><s:property value="username"/></td>
+                            <td><s:property value="password"/></td>
+                            <td><s:property value="tel"/></td>
+                            <td><s:property value="email"/></td>
+                            <td><s:property value="loginTime"/></td>
+                            
                             <td>
                                 <a class="link-update" href=" ">修改</a>
                                 <a class="link-del" href=" ">删除</a>
                             </td>
                         </tr> 
-                        
+                        </s:iterator>
                     </table>
                     <div class="list-page"> 2 条 1/1 页</div>
                 </div>

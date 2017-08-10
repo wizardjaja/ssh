@@ -2,20 +2,15 @@
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
 	<package name="ssh" namespace="/admin" extends="struts-default">
-		<!-- <action name="userAction" class="userAction">
-			<result name="success">/success.jsp</result>
+		<action name="userAction" class="userAction">
+			<result name="success">/admin/userList.jsp</result>
 			<result name="input">/index.jsp</result>
-		</action> -->
+		</action>
 		
 		<action name="adminAction" class="adminAction">
 			<result name="success">/admin/adminList.jsp</result>
 			<result name="successUpdate">/admin/updateAdmin.jsp</result>
 			<result name="ok" type="redirectAction">adminAction</result>
-		</action>
-	</package>
-	<package name="user" namespace="/user" extends="struts-default">
-		<action name="userAction" class="userAction">
-			<result name="success">/user/userList.jsp</result>
 		</action>
 	</package>
 </struts>    
