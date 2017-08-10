@@ -1,6 +1,9 @@
 package com.wizard.action;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.wizard.bean.Admin;
@@ -109,9 +112,13 @@ public class AdminAction extends ActionSupport {
 	}
 	
 	public String register() {
+		Date d = new Date();
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd  kk:mm:ss ");
+		sdf.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));
 		Admin admin = new Admin();
 		admin.setUsername(username);
 		admin.setPassword(password);
+		admin.setLastLoginTime(sdf.format(d));
 		adminService.saveAdminUser(admin);
 		return "ok";
 	}
