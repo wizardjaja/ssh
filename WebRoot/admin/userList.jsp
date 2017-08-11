@@ -115,8 +115,8 @@
                     </table>
                     <div class="list-page"> 2 条 1/1 页
                     	${page.allRow }条   ${page.currentPage }/${page.totalPage }页
-                    	<a href="userAction.action?currentPage=${currentPage-1 }">上一页</a>
-                    	<a href="userAction.action?currentPage=${currentPage+1 }">下一页</a>
+                    	<s:if test="page.hasPrePage"><a href="userAction.action?currentPage=${currentPage-1 }">上一页</a></s:if>
+                    	<s:if test="page.hasNextPage"><a href="userAction.action?currentPage=${currentPage+1 }">下一页</a></s:if>
                     </div>
                 </div>
             </form>
