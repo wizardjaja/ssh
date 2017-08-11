@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- private int id;
+	private String ordersNo;
+	private String receiveTime;
+	private User user;
+	private String status;
+	//private List<OrdersItem> items; -->
+<hibernate-mapping package="com.wizard.bean">
+	<class name="Orders" table="orders" catalog="mydb">
+		<id name="id" column="id">
+			<generator class="native"></generator>
+		</id>
+		<property name="ordersNo" column="ordersno"/>
+		<property name="receiveTime" column="receivetime"/>
+		<property name="status" column="status"/>
+		<many-to-one name="user" column="user_id"></many-to-one>
+	</class>
+</hibernate-mapping>

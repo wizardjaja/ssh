@@ -13,5 +13,18 @@
 			<result name="successUpdate">/admin/updateAdmin.jsp</result>
 			<result name="ok" type="redirectAction">adminAction</result>
 		</action>
+		
+		<action name="ordersAction" class="ordersAction">
+			<result name="success">/admin/ordersList.jsp</result>
+			<result name="successUpdate">/admin/updateAdmin.jsp</result>
+			<result name="ok" type="redirectAction">ordersAction</result>
+		</action>
+		
+		
+	</package>
+	<package name="index" namespace="/" extends="struts-default">
+		<action name="indexAction" class="com.wizard.action.IndexAction">
+			<result name="success">/index.jsp</result>
+		</action>
 	</package>
 </struts>    

@@ -10,4 +10,8 @@
 	<bean name="adminAction" class="com.wizard.action.AdminAction">
 		<property name="adminService" ref="adminService"></property>
 	</bean>
+	
+	<bean name="ordersAction" class="com.wizard.action.OrdersAction">
+		<property name="ordersService" ref="ordersService"></property>
+	</bean>
 </beans>
