@@ -8,6 +8,28 @@
     <link rel="stylesheet" type="text/css" href="css/common.css"/>
     <link rel="stylesheet" type="text/css" href="css/main.css"/>
     <script type="text/javascript" src="js/libs/modernizr.min.js"></script>
+    <script type="text/javascript">
+    	function allChoose() {
+			var allcheck = document.getElementById("allck");
+			var idcks = document.getElementsByName("ids");
+			if(allcheck.checked == true){
+				for(var i=0; i<idcks.length; i++){
+					idcks[i].checked = true;
+				}
+			}
+			else{
+				for(var i=0; i<idcks.length; i++){
+					idcks[i].checked = false;
+				}
+			}
+		}
+    	function toPage(){
+    		var fm = document.getElementById("myform");
+    		var redPage = document.getElementById("redPage").value;
+			fm.action="userAction.action?currentPage="+redPage;
+			fm.submit();
+    	}
+    </script>
 </head>
 <body>
 <div class="topbar-wrap white">
@@ -79,17 +101,17 @@
             </div>
         </div>
         <div class="result-wrap">
-            <form action="" name="myform" id="myform" method="post">
+            <form action="userAction!deleteUsers.action" name="myform" id="myform" method="post">
                 <div class="result-title">
                     <div class="result-list">
                         <a href="addUser.jsp"><i class="icon-font"></i>增加用户</a>
-                        <a id="batchDel" href="javascript:void(0)"><i class="icon-font"></i>批量删除</a> 
+                        <input type="submit" value="批量删除"> 
                     </div>
                 </div>
                 <div class="result-content">
                     <table class="result-tab" width="100%">
-                        <tr>
-                            <th class="tc" width="5%"><input class="allChoose" name="" type="checkbox"></th>
+                            <th class="tc" width="5%"><input class="allChoose" id="allck" type="checkbox" onclick="allChoose()"></th>
+                            <th>ID</th>
                             <th>用户名</th>
                             <th>密码</th>
                             <th>电话号码</th>
@@ -99,7 +121,8 @@
                         </tr>
                         <s:iterator value="page.data">
                         <tr>
-                            <td class="tc"><input name="ids" value=" " type="checkbox"></td>
+                            <td class="tc"><input name="ids" value="${id}" type="checkbox"></td>
+                            <td><s:property value="id"/></td>
                             <td><s:property value="username"/></td>
                             <td><s:property value="password"/></td>
                             <td><s:property value="tel"/></td>
@@ -107,8 +130,8 @@
                             <td><s:property value="registerTime"/></td>
                             
                             <td>
-                                <a class="link-update" href="addUser.jsp">修改</a>
-                                <a class="link-del" href=" ">删除</a>
+                                <a class="link-update" href="userAction!findUserById.action?id=${id}">修改</a>
+                                <a class="link-del" href="userAction!delete.action?id=${id}">删除</a>
                             </td>
                         </tr> 
                         </s:iterator>
@@ -117,6 +140,8 @@
                     	${page.allRow }条   ${page.currentPage }/${page.totalPage }页
                     	<s:if test="page.hasPrePage"><a href="userAction.action?currentPage=${currentPage-1 }">上一页</a></s:if>
                     	<s:if test="page.hasNextPage"><a href="userAction.action?currentPage=${currentPage+1 }">下一页</a></s:if>
+                    	<input type="text" id="redPage" placeholder="${page.currentPage }" style="width: 5%"/>
+                    	<input type="button" id="toPageBtn" value="转到" onclick="toPage()"/>
                     </div>
                 </div>
             </form>

@@ -29,8 +29,8 @@ private SessionFactory sessionFactory;
 
 
 	@Override
-	public void deleteUser(Integer id) {
-		getSession().delete(id);
+	public void deleteUser(User user) {
+		getSession().delete(user);
 		
 	}
 
@@ -54,5 +54,13 @@ private SessionFactory sessionFactory;
 		page.setPageSize(pageSize);
 		page.setTotalPage();
 		return page;
+	}
+
+
+	@Override
+	public User findUserById(Integer id) {
+		Query query = getSession().createQuery("from User where id="+id);
+		User user = (User) query.list().get(0);
+		return user;
 	}
 }

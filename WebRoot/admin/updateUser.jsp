@@ -1,4 +1,4 @@
-﻿ 
+﻿<%@page language="java" pageEncoding="utf-8"%> 
 <!doctype html>
 <html>
 <head>
@@ -37,20 +37,20 @@
                 <li>
                     <a href="#"><i class="icon-font">&#xe003;</i>常用操作</a>
                     <ul class="sub-menu">
-                        <li><a href="userList.jsp"><i class="icon-font">&#xe008;</i>用户管理</a></li>
+                        <li><a href="userAction.action"><i class="icon-font">&#xe008;</i>用户管理</a></li>
+                        <li><a href="design.html"><i class="icon-font">&#xe006;</i>产品类别</a></li>
                         <li><a href="design.html"><i class="icon-font">&#xe005;</i>产品管理</a></li>
-                        <li><a href="design.html"><i class="icon-font">&#xe006;</i>分类管理</a></li>
-                        <li><a href="design.html"><i class="icon-font">&#xe004;</i>订单管理</a></li>
+                        <li><a href="design.html"><i class="icon-font">&#xe005;</i>订单管理</a></li>
+                        <li><a href="adminAction.action"><i class="icon-font">&#xe005;</i>管理员管理</a></li>
                         <li><a href="design.html"><i class="icon-font">&#xe012;</i>评论管理</a></li>
                         <li><a href="design.html"><i class="icon-font">&#xe052;</i>友情链接</a></li>
-                        <li><a href="design.html"><i class="icon-font">&#xe033;</i>广告管理</a></li>
+                        <li><a href="design.html"><i class="icon-font">&#xe033;</i>广告管理</a></li> 
                     </ul>
                 </li>
                 <li>
                     <a href="#"><i class="icon-font">&#xe018;</i>系统管理</a>
                     <ul class="sub-menu">
-                        <li><a href="system.html"><i class="icon-font">&#xe017;</i>系统设置</a></li>
-                        <li><a href="system.html"><i class="icon-font">&#xe037;</i>清理缓存</a></li>
+                        <li><a href="system.html"><i class="icon-font">&#xe017;</i>系统设置</a></li> 
                         <li><a href="system.html"><i class="icon-font">&#xe046;</i>数据备份</a></li>
                         <li><a href="system.html"><i class="icon-font">&#xe045;</i>数据还原</a></li>
                     </ul>
@@ -66,40 +66,28 @@
         </div>
         <div class="result-wrap">
             <div class="result-content">
-                <form action=" " method="post" id="myform" name="myform">
+                <form action="userAction!update.action" method="post" id="myform" name="myform">
                      
                     <table class="insert-tab" width="100%">
-                        <tbody><tr>
-                            <th width="120"><i class="require-red">*</i>用户类型：</th>
-                            <td>
-                                <select name="type" id="type" class="required"> 
-                                    <option value="1" >管理员用户</option>
-                                    <option value="0" >普通用户</option>
-                                </select>
-                            </td>
-                        </tr>
+                        <tbody>
                             <tr>
                                 <th><i class="require-red">*</i>用户名：</th>
                                 <td>
-                                    <input class="common-text required" name="username" value=" " size="50" value="" type="text">
+                                	<input class="common-text" name="id" value="${user.id}" size="50" type="hidden">
+                                    <input class="common-text required" name="username" value="${user.username }" size="50" value="${username }" type="text" readonly="readonly">
                                 </td>
                             </tr>
                             <tr>
-                                <th>真实姓名：</th>
-                                <td><input class="common-text" name="realname" value=" " size="50" type="text"></td>
-                            </tr>
-                            <tr>
                                 <th>密码：</th>
-                                <td><input class="common-text" name="password" value=" " size="50" type="text"></td>
+                                <td><input class="common-text" name="password" value="${user.password }" size="50" type="text"></td>
                             </tr>
                             <tr>
                                 <th>联系电话：</th>
-                                <td><input class="common-text" name="tel" value=" " size="50" type="text"></td>
+                                <td><input class="common-text" name="tel" value="${user.tel }" size="50" type="text"></td>
                             </tr>
                             <tr>
                                 <th>邮箱：</th>
-                                <td><input class="common-text" name="email" value=" " size="50" type="text">
-                                    <input class="common-text" name="id" value=" " size="50" type="hidden">
+                                <td><input class="common-text" name="email" value="${user.email }" size="50" type="text">
                                 </td>
                             </tr>
                             

@@ -4,6 +4,7 @@
 	<package name="ssh" namespace="/admin" extends="struts-default">
 		<action name="userAction" class="userAction">
 			<result name="success">/admin/userList.jsp</result>
+			<result name="toUpdate">/admin/updateUser.jsp</result>
 			<result name="ok" type="redirectAction">userAction</result>
 		</action>
 		
