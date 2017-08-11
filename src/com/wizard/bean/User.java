@@ -6,14 +6,15 @@ public class User {
 	private String password;
 	private String tel;
 	private String email;
-	private String loginTime;
+	private String registerTime;
 
    
-	public String getLoginTime() {
-		return loginTime;
+	
+	public String getRegisterTime() {
+		return registerTime;
 	}
-	public void setLoginTime(String loginTime) {
-		this.loginTime = loginTime;
+	public void setRegisterTime(String registerTime) {
+		this.registerTime = registerTime;
 	}
 	public Integer getId() {
 		return id;

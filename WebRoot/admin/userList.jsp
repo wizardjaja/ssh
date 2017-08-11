@@ -82,7 +82,7 @@
             <form action="" name="myform" id="myform" method="post">
                 <div class="result-title">
                     <div class="result-list">
-                        <a href="#"><i class="icon-font"></i>增加用户</a>
+                        <a href="addUser.jsp"><i class="icon-font"></i>增加用户</a>
                         <a id="batchDel" href="javascript:void(0)"><i class="icon-font"></i>批量删除</a> 
                     </div>
                 </div>
@@ -104,10 +104,10 @@
                             <td><s:property value="password"/></td>
                             <td><s:property value="tel"/></td>
                             <td><s:property value="email"/></td>
-                            <td><s:property value="loginTime"/></td>
+                            <td><s:property value="registerTime"/></td>
                             
                             <td>
-                                <a class="link-update" href=" ">修改</a>
+                                <a class="link-update" href="addUser.jsp">修改</a>
                                 <a class="link-del" href=" ">删除</a>
                             </td>
                         </tr> 

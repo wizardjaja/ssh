@@ -4,7 +4,7 @@
 	<package name="ssh" namespace="/admin" extends="struts-default">
 		<action name="userAction" class="userAction">
 			<result name="success">/admin/userList.jsp</result>
-			<result name="input">/index.jsp</result>
+			<result name="ok" type="redirectAction">userAction</result>
 		</action>
 		
 		<action name="adminAction" class="adminAction">

@@ -1,7 +1,10 @@
 package com.wizard.action;
 
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.wizard.bean.User;
@@ -71,4 +74,17 @@ public class UserAction extends ActionSupport{
 		return SUCCESS;
 	}
 	
+	public String register() throws Exception {
+		User user = new User();
+		user.setUsername(username);
+		user.setPassword(password);
+		user.setTel(tel);
+		user.setEmail(email);
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
+		sdf.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));
+		user.setRegisterTime(sdf.format(date));
+		userService.saveUser(user);
+		return "ok";
+	}
 }
